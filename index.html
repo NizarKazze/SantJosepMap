@@ -1,0 +1,269 @@
+<!-- Contenedor del mapa -->
+<div id="mapContent" style="display:flex;flex-wrap:wrap;">
+  <div id="filter" style="flex:1 1 300px;max-width:300px;padding:10px;">
+    <div id="SearchContainer">
+      <div class="SearchImg">
+        <img src="https://www.santjosep.net/wp-content/uploads/2025/09/lupa.png" alt="">
+      </div>
+      <input type="text" id="searchInput" placeholder="buscar..." />
+    </div>
+    <select id="selectLocation">
+      <option value="">Todas las categorias</option>
+      <option value="playas">Playas</option>
+      <option value="iglesias">Iglesias</option>
+      <option value="museos">Museos</option>
+      <option value="torres">Torres</option>
+      <option value="biblioteca">Bibliotecas</option>
+    </select>
+    <div class="btnGroup">
+      <button id="btnShowFilter" class='mapbtn'>Resultado Filtro</button>
+      <button id="btnShowMap" class='mapbtn'>Mapa</button>
+      <button id="btnGeoloc" class='mapbtn'>Geolocalizar</button>
+    </div>
+    <div id="filterResults"></div>
+  </div>
+  <div id="map" style="width: 100%"></div>
+</div>
+
+<!-- Leaflet CSS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+<link rel="stylesheet" href="style.css">
+
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+<!-- JSON Data -->
+<script src="https://www.santjosep.net/wp-content/themes/atmosphere-child/js/mapdata.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const isMobile = window.innerWidth <= 768;
+  const map = L.map('map').setView([38.9216, 1.2931], isMobile ? 11 : 12);
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
+  }).addTo(map);
+  
+  map.whenReady(function () {
+    setTimeout(function () {
+      map.invalidateSize();
+    }, 300);
+  });
+
+  let markers = [];
+  let userMarker = null;
+
+  data.features.forEach(point => {
+    const coords = point.geometry.coordinates;
+    const props = point.properties;
+
+    let marker = L.marker([coords[1], coords[0]], { icon: getIconByCategory(props.category) })
+      .bindPopup(popupTemplate(point))
+      .addTo(map);
+
+    marker.category = props.category;
+    marker.pointData = point;
+    markers.push(marker);
+  });
+
+  function getIconByCategory(category) {
+    let color = "blue";
+    if (category === "playas") color = "green";
+    if (category === "museos") color = "red";
+    if (category === "iglesias") color = "orange";
+    if (category === "torres") color = "violet";
+    if (category === "biblioteca") color = "black";
+
+    return L.icon({
+      iconUrl: `https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-${color}.png`,
+      shadowUrl: "https://unpkg.com/leaflet/dist/images/marker-shadow.png",
+      iconSize: isMobile ? [16, 28] : [25, 41],
+      iconAnchor: isMobile ? [10, 33] : [12, 41],
+      popupAnchor: [1, -34],
+      shadowSize: isMobile ? [20, 20] : [41, 41]
+    });
+  }
+
+  function getColorByCategory(category) {
+    const categoryColors = {
+      'playas': '#10b981',
+      'museos': '#ef4444',
+      'iglesias': '#f59e0b',
+      'torres': '#8b5cf6',
+      'biblioteca': '#374151'
+    };
+    return categoryColors[category] || '#6b7280';
+  }
+
+  function popupTemplate(point) {
+    return `
+      <div class="popupContainer">
+        <div class="popupImg">
+          <img class="popupImage" src="${point.properties.image || 'https://via.placeholder.com/150x100?text=Sin+imagen'}" alt="${point.properties.name}">
+        </div>
+        <div class="popupContent">
+          <h3 class="popupTitle">${point.properties.name}</h3>
+          <p class="popupDesc">${point.properties.description}</p>
+          ${point.properties.website ? `<a class="websiteLink" href="${point.properties.website}" target="_blank" rel="noopener noreferrer">Visitar Página</a>` : ''}
+        </div>
+      </div>
+    `;
+  }
+
+  function searchResultTemplate(point, categoryColor) {
+    const filterResults = document.getElementById('filterResults');
+    let divContainer = document.createElement('div');
+    divContainer.classList.add('resultItem', 'clickable-item');
+
+    let imgContainer = document.createElement('div');
+    imgContainer.classList.add('imgContainer');
+
+    let imgEl = document.createElement('img');
+    imgEl.classList.add('resultImage');
+    imgEl.src = point.properties.image || "https://via.placeholder.com/300x180?text=Sin+imagen";
+    imgEl.alt = point.properties.name;
+
+    let categoryTag = document.createElement('span');
+    categoryTag.classList.add('categoryTag');
+    categoryTag.textContent = point.properties.category;
+    categoryTag.style.backgroundColor = categoryColor || getColorByCategory(point.properties.category);
+
+    imgContainer.appendChild(imgEl);
+    imgContainer.appendChild(categoryTag);
+
+    let resultTitle = document.createElement('h3');
+    resultTitle.classList.add('resultTitle');
+    resultTitle.textContent = point.properties.name;
+
+    let resultDesc = document.createElement('p');
+    resultDesc.classList.add('resultDesc');
+    resultDesc.textContent = point.properties.description;
+
+    let websiteLink = document.createElement('a');
+    websiteLink.classList.add('websiteLink');
+    websiteLink.href = point.properties.url || "#";
+    websiteLink.textContent = 'Visitar Página';
+    websiteLink.rel = 'noopener noreferrer';
+
+    divContainer.appendChild(imgContainer);
+    divContainer.appendChild(resultTitle);
+    divContainer.appendChild(resultDesc);
+    divContainer.appendChild(websiteLink);
+
+    divContainer.addEventListener("click", function(e) {
+      if (e.target.tagName !== 'A') {
+        const coords = point.geometry.coordinates;
+        map.setView([coords[1], coords[0]]); 
+        const marker = markers.find(m => m.pointData === point);
+        if (marker) marker.openPopup();
+      }
+    });
+
+    filterResults.appendChild(divContainer);
+  }
+
+  // Filter by input
+  let UserInput = "";
+  const SearchInput = document.getElementById("searchInput");
+  
+  SearchInput.addEventListener("input", (e) => {
+    UserInput = e.target.value.toLowerCase();
+    SearchByUserInput(UserInput);
+  });
+
+  function SearchByUserInput(input) {
+    let filterContent = document.querySelectorAll('.resultItem');
+
+    const normalizedInput = input
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/\s+/g, "");
+
+    const pattern = new RegExp(normalizedInput, "i");
+
+    filterContent.forEach(resultItem => {
+      const itemName = resultItem.querySelector('.resultTitle').textContent
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/\s+/g, "");
+
+      if (!pattern.test(itemName)) {
+        resultItem.style.display = 'none';
+      } else {
+        resultItem.style.display = 'flex';
+      }
+    });
+  }
+
+  // Filter by category
+  function filtro() {
+    const category = document.getElementById('selectLocation').value;
+    const filterResults = document.getElementById('filterResults');
+    filterResults.innerHTML = "";
+
+    markers.forEach(marker => {
+      if (!category || marker.category === category) {
+        map.addLayer(marker);
+      } else {
+        map.removeLayer(marker);
+      }
+    });
+
+    data.features.forEach(point => {
+      if (!category || point.properties.category === category) {
+        const categoryColor = getColorByCategory(point.properties.category);
+        searchResultTemplate(point, categoryColor);
+      }
+    });
+  }
+
+  // Geolocalización 
+  document.getElementById('btnGeoloc').addEventListener('click', () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(pos => {
+        const lat = pos.coords.latitude;
+        const lon = pos.coords.longitude;
+
+        if (userMarker) map.removeLayer(userMarker);
+
+        userMarker = L.marker([lat, lon], {
+          icon: L.icon({
+            iconUrl: "https://cdn-icons-png.flaticon.com/512/64/64113.png",
+            iconSize: [30, 30]
+          })
+        }).addTo(map).bindPopup("Estás aquí").openPopup();
+
+        map.setView([lat, lon], 14);
+      }, err => {
+        alert("No se pudo obtener la ubicación");
+      });
+    } else {
+      alert("La geolocalización no está soportada en este navegador.");
+    }
+  });
+
+  document.getElementById('selectLocation').addEventListener('change', filtro);
+  filtro();
+  
+  // Show/hide map or filter results
+  const btnShowFilter = document.getElementById('btnShowFilter');
+  const btnShowMap = document.getElementById('btnShowMap');
+  const mapContainer = document.getElementById('map');
+  const filterResultsContainer = document.getElementById('filterResults');
+
+  btnShowFilter.addEventListener('click', () => {
+    mapContainer.style.display = 'none';
+    filterResultsContainer.style.display = 'block';
+  });
+ 
+  btnShowMap.addEventListener('click', () => {
+    filterResultsContainer.style.display = 'none';
+    mapContainer.style.display = 'block';
+    setTimeout(() => map.invalidateSize(), 300);
+  });
+ 
+  window.addEventListener('resize', function () {
+    map.invalidateSize();
+  });
+});
+</script>
