@@ -13,7 +13,8 @@
       <option value="iglesias">Iglesias</option>
       <option value="museos">Museos</option>
       <option value="torres">Torres</option>
-      <option value="biblioteca">Bibliotecas</option>
+      <option value="patrimonio">Patrimonio</option>
+      <option value="pueblos">Pueblos</option>
     </select>
     <div class="btnGroup">
       <button id="btnShowFilter" class='mapbtn'>Resultado Filtro</button>
@@ -35,14 +36,13 @@
 <!-- JSON Data -->
 <script src="https://www.santjosep.net/wp-content/themes/atmosphere-child/js/mapdata.js"></script>
 
+
 <script>
 document.addEventListener("DOMContentLoaded", function () {
   const isMobile = window.innerWidth <= 768;
-  const map = L.map('map').setView([38.9216, 1.2931], isMobile ? 11 : 12);
+  const map = L.map('map').setView([38.900444, 1.327944], isMobile ? 11 : 13);
+  var base = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '&copy; OpenStreetMap contributors' }).addTo(map);
 
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
-  }).addTo(map);
   
   map.whenReady(function () {
     setTimeout(function () {
@@ -57,14 +57,60 @@ document.addEventListener("DOMContentLoaded", function () {
     const coords = point.geometry.coordinates;
     const props = point.properties;
 
-    let marker = L.marker([coords[1], coords[0]], { icon: getIconByCategory(props.category) })
+    if (props.type == "zone"){
+      createZone(point);
+
+    } else {
+      let marker = L.marker([coords[1], coords[0]], { icon: getIconByCategory(props.category) })
       .bindPopup(popupTemplate(point))
       .addTo(map);
 
-    marker.category = props.category;
-    marker.pointData = point;
-    markers.push(marker);
+      marker.category = props.category;
+      marker.pointData = point;
+      markers.push(marker);
+    }
+
+
   });
+  
+  // ============ Coordenadas zonas =========
+
+  function createZone(feature) {
+    var polygon = L.geoJSON(feature, {
+      style: {
+        color: '#3388ff',
+        fillColor: '#3388ff',
+        opacity: 0.4,
+        fillOpacity: 0.4
+      }
+    }).addTo(map);
+
+    polygon.eachLayer(function(layer) {
+      layer.category = feature.properties.category;
+    });
+  }
+
+  function getPolygonCenter(feature) {
+    if (feature.geometry.type !== "Polygon") {
+      console.warn("El feature no es un polígono");
+      return null;
+    }
+
+    let coords = feature.geometry.coordinates[0];
+    let sumLat = 0, sumLng = 0;
+
+    coords.forEach(c => {
+      sumLng += c[0];
+      sumLat += c[1];
+    });
+
+    let lat = sumLat / coords.length;
+    let lng = sumLng / coords.length;
+
+    return [lat, lng];
+  }
+
+
 
   function getIconByCategory(category) {
     let color = "blue";
@@ -72,7 +118,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (category === "museos") color = "red";
     if (category === "iglesias") color = "orange";
     if (category === "torres") color = "violet";
-    if (category === "biblioteca") color = "black";
+    if (category === "patrimonio") color = "black";
 
     return L.icon({
       iconUrl: `https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-${color}.png`,
@@ -90,10 +136,12 @@ document.addEventListener("DOMContentLoaded", function () {
       'museos': '#ef4444',
       'iglesias': '#f59e0b',
       'torres': '#8b5cf6',
-      'biblioteca': '#374151'
+      'patrimonio': '#374151'
     };
     return categoryColors[category] || '#6b7280';
   }
+
+  // ========== Templates ============
 
   function popupTemplate(point) {
     return `
@@ -150,19 +198,33 @@ document.addEventListener("DOMContentLoaded", function () {
     divContainer.appendChild(resultDesc);
     divContainer.appendChild(websiteLink);
 
-    divContainer.addEventListener("click", function(e) {
-      if (e.target.tagName !== 'A') {
-        const coords = point.geometry.coordinates;
-        map.setView([coords[1], coords[0]]); 
-        const marker = markers.find(m => m.pointData === point);
-        if (marker) marker.openPopup();
-      }
-    });
+    if (point.properties.type == "zone"){
+      divContainer.addEventListener("click", function (e) {
+        if (e.target.tagName !== 'A') {
+          let polygonLayer = L.geoJSON(point).addTo(map);
+          map.fitBounds(polygonLayer.getBounds());
+        }
+      });
+      
+    } else {
+      divContainer.addEventListener("click", function(e) {
+        if (e.target.tagName !== 'A') {
+          const coords = point.geometry.coordinates;
+          map.setView([coords[1], coords[0]]); 
+          const marker = markers.find(m => m.pointData === point);
+          if (marker) marker.openPopup();
+        }
+      });
+    }
+
+
+    
 
     filterResults.appendChild(divContainer);
   }
 
-  // Filter by input
+  // ============= FILTER BY INPUT ===================
+
   let UserInput = "";
   const SearchInput = document.getElementById("searchInput");
   
@@ -195,7 +257,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Filter by category
+  // ============== FILTER BY CATEGORY ===============
   function filtro() {
     const category = document.getElementById('selectLocation').value;
     const filterResults = document.getElementById('filterResults');
@@ -217,7 +279,8 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Geolocalización 
+  // ========= GEOLOCATION ===========
+
   document.getElementById('btnGeoloc').addEventListener('click', () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(pos => {
@@ -245,7 +308,8 @@ document.addEventListener("DOMContentLoaded", function () {
   document.getElementById('selectLocation').addEventListener('change', filtro);
   filtro();
   
-  // Show/hide map or filter results
+  // ============ RESPONSIVE =============
+
   const btnShowFilter = document.getElementById('btnShowFilter');
   const btnShowMap = document.getElementById('btnShowMap');
   const mapContainer = document.getElementById('map');

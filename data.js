@@ -4,89 +4,120 @@ const data = {
     // --- PLAYAS ---
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [1.2326081, 38.9679144] },
-      "properties": { name: "Cala Bassa", description: "Playa en Ibiza", category: "playas" }
+      "geometry": { "type": "Point", "coordinates": [1.239694, 38.968222] },
+      "properties": { name: "Cala Bassa", description: "Una piscina natural de aguas cristalinas rodeada de sabinas y pinos.", category: "playas", image: "https://www.santjosep.net/wp-content/uploads/2025/09/CalaBassa.webp", url: "https://www.santjosep.net/ver/playas/cala-bassa/" }
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [1.2151340, 38.8953135] },
-      "properties": { name: "Cala Carbó", description: "Playa en Ibiza", category: "playas" }
+      "geometry": { "type": "Point", "coordinates": [1.218056, 38.894556] },
+      "properties": { name: "Cala Carbó", description: "Pequeña y tranquila, ideal para desconectar, con un ambiente familiar", category: "playas", image: "https://www.santjosep.net/wp-content/uploads/2025/09/CalaCarbo.webp", url: "https://www.santjosep.net/ver/playas/cala-carbo/" }
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [1.2176243, 38.9502480] },
-      "properties": { name: "Cala Codolar", description: "Playa en Ibiza", category: "playas" }
+      "geometry": { "type": "Point", "coordinates": [1.227924, 38.950249] },
+      "properties": { name: "Cala Codolar", description: "Cala íntima de aguas turquesa entre Cala Tarida y Platges de Comte, perfecta para atardeceres", category: "playas", image: "https://www.santjosep.net/wp-content/uploads/2025/09/calacodolar_6.webp", url: "https://www.santjosep.net/ver/playas/cala-codolar/" }
     },
     {
       "type": "Feature",
       "geometry": { "type": "Point", "coordinates": [1.2190392, 38.8902811] },
-      "properties": { name: "Cala d’Hort", description: "Playa en Ibiza", category: "playas" }
+      "properties": { name: "Cala d’Hort", description: "Emblemática por las vistas a Es Vedrà y Es Vedranell, con atardeceres inolvidables", category: "playas", image: 'https://www.santjosep.net/wp-content/uploads/2025/09/calaDhort.webp' }
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [1.1800814, 38.8902739] },
-      "properties": { name: "Cala Llentia", description: "Playa en Ibiza", category: "playas" }
+      "geometry": { "type": "Point", "coordinates": [1.228111, 38.948139] },
+      "properties": { name: "Cala Llentia", description: "Rincón salvaje entre Cala Codolar y Cala Tarida, conocido por su paisaje y calma", category: "playas", image: "https://www.santjosep.net/wp-content/uploads/2025/09/Llentia_1.webp", url: "https://www.santjosep.net/ver/playas/cala-llentia/" }
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [1.2486393, 38.8621450] },
-      "properties": { name: "Cala Llentrisca", description: "Playa en Ibiza", category: "playas" }
+      "geometry": { "type": "Point", "coordinates": [1.253278, 38.862694] },
+      "properties": { name: "Cala Llentrisca", description: "Una de las calas más escondidas y auténticas del sur de Ibiza", category: "playas", image: "https://www.santjosep.net/wp-content/uploads/2020/01/calallentrisca_IMG_5552.jpg", url: "https://www.santjosep.net/ver/playas/cala-llentrisca/" }
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [1.2292622, 38.9273675] },
-      "properties": { name: "Cala Molí", description: "Playa en Ibiza", category: "playas" }
+      "geometry": { "type": "Point", "coordinates": [1.315083, 38.868167] },
+      "properties": { name: "Playa des Jondal", description: "Fondeadero clásico con restaurantes de playa, ambiente chic entre pinos y sabinas.", category: "playas", image: "https://www.santjosep.net/wp-content/uploads/2025/09/calaJondal_5.webp", url: "https://www.santjosep.net/ver/playas/playa-des-jondal/" }
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [1.2215336, 38.9399582] },
-      "properties": { name: "Cala Tarida", description: "Playa en Ibiza", category: "playas" }
+      "geometry": { "type": "Point", "coordinates": [1.235444, 38.940639] },
+      "properties": { name: "Cala Tarida", description: "Amplia, familiar y con muchos servicios, en un entorno de aguas claras y arena fina", category: "playas", image: 'https://www.santjosep.net/wp-content/uploads/2025/09/calaTarida.webp', url: "https://www.santjosep.net/ver/playas/cala-tarida/" }
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [1.1988180, 38.9145608] },
-      "properties": { name: "Cala Vedella", description: "Playa en Ibiza", category: "playas" }
+      "geometry": { "type": "Point", "coordinates": [1.225556, 38.914444] },
+      "properties": { name: "Cala Vedella", description: "Gran cala en forma de bahía, aguas tranquilas y ambiente familiar todo el verano", category: "playas", image: 'https://www.santjosep.net/wp-content/uploads/2025/09/CalaVadella.webp', url: "https://www.santjosep.net/ver/playas/cala-vedella/" }
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [1.3293889, 38.8681063] },
-      "properties": { name: "Playa es Bol Nou", description: "Playa en Ibiza", category: "playas" }
+      "geometry": { "type": "Point", "coordinates": [1.331944, 38.868222] },
+      "properties": { name: "Playa es Bol Nou", description: "Acantilados rojizos y ambiente histórico junto al yacimiento fenicio de Sa Caleta", category: "playas", image: "https://www.santjosep.net/wp-content/uploads/2020/01/EsBolNou_DJI_0076.jpg", url: "https://www.santjosep.net/ver/playas/es-bol-nou/" }
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [1.3924125, 38.8422815] },
-      "properties": { name: "Platja des Cavallet", description: "Playa en Ibiza", category: "playas" }
+      "geometry": { "type": "Point", "coordinates": [1.4030086, 38.8400931] },
+      "properties": { name: "Platja des Cavallet", description: "Larga playa natural y ambiente nudista, dentro del Parc Natural de ses Salines", category: "playas", image: "https://www.santjosep.net/wp-content/uploads/2020/01/escavallet_IMG_4040.jpg", url: "https://www.santjosep.net/ver/playas/es-cavallet/" }
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [1.3435980, 38.8702506] },
-      "properties": { name: "Platja des Codolar", description: "Playa en Ibiza", category: "playas" }
+      "geometry": { "type": "Point", "coordinates": [1.3461729, 38.8702506] },
+      "properties": { name: "Platja des Codolar", description: "Gran playa de cantos rodados junto al aeropuerto y el Parc Natural de Ses Salines", category: "playas", image: "https://www.santjosep.net/wp-content/uploads/2025/09/cover_DSC00536.jpg", url: "https://www.santjosep.net/ver/playas/playa-des-codolar/" }
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [1.2254234, 38.9204297] },
-      "properties": { name: "Es Torrent", description: "Playa en Ibiza", category: "playas" }
+      "geometry": { "type": "Point", "coordinates": [1.2990976, 38.8748496] },
+      "properties": { name: "Es Torrent", description: "Cala de guijarros y roca, aguas profundas y cocina marinera a pie de playa", category: "playas", image: "https://www.santjosep.net/wp-content/uploads/2020/01/estorrent_IMG_6025.jpg", url: "https://www.santjosep.net/ver/playas/es-torrent/"}
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [1.3054056, 38.8683768] },
-      "properties": { name: "Es Xarco", description: "Playa en Ibiza", category: "playas" }
+      "geometry": { "type": "Point", "coordinates": [1.316000, 38.866000] },
+      "properties": { name: "Es Xarco", description: "Cala de arena y roca con ambiente local, casetas varadero y aguas transparentes", category: "playas", image: "https://www.santjosep.net/wp-content/uploads/2025/09/xarco_cover.webp", url: "https://www.santjosep.net/ver/playas/es-xarco/" }
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [1.2101524, 38.9628076] },
-      "properties": { name: "Playa Cala Conta", description: "Playa en Ibiza", category: "playas" }
+      "geometry": { "type": "Point", "coordinates": [1.222222, 38.963611] },
+      "properties": { name: "Playa Cala Conta", description: "Conjunto de calas de arena clara y aguas turquesas con atardeceres míticos frente a los islotes de ponent", category: "playas", image: "https://www.santjosep.net/wp-content/uploads/2020/01/platjasdecomte_DJI_0021.jpg", url: "https://www.santjosep.net/ver/playas/platges-de-comte/ " }
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [1.4034042, 38.8840273] },
-      "properties": { name: "Playa de Bossa", description: "Playa en Ibiza", category: "playas" }
+      "geometry": { "type": "Point", "coordinates": [1.405917, 38.884083] },
+      "properties": { name: "Playa de Bossa", description: "La playa más extensa de Ibiza, con tramos familiares y ambiente joven", category: "playas", image: "https://www.santjosep.net/wp-content/uploads/2025/09/playaBossa_cover.webp", url: "https://www.santjosep.net/ver/playas/playa-den-bossa/"}
     },
     {
       "type": "Feature",
       "geometry": { "type": "Point", "coordinates": [1.2580123, 38.8775636] },
-      "properties": { name: "Cala des Cubells", description: "Playa en Ibiza", category: "playas" }
+      "properties": { name: "Playa des Cubells", description: "Pequeñas calas al pie de los acantilados de Es Cubells, paisaje espectacular y aguas claras", category: "playas", image: "https://www.santjosep.net/wp-content/uploads/2013/11/P1160152.jpg", url: "https://www.santjosep.net/ver/playas/playa-des-cubells/" }
     },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [1.268250, 38.966556] },
+      "properties": { name: "Port des Torrent", description: "Arenal familiar con múltiples servicios y aguas muy tranquilas", category: "playas", image: "https://www.santjosep.net/wp-content/uploads/2025/09/portestorrent.webp", url: "https://www.santjosep.net/ver/playas/port-des-torrent/" }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [1.2995482, 38.968079] },
+      "properties": { name: "S’Estanyol", description: "Pequeño arenal resguardado, perfecto para un baño tranquilo en Cala de Bou", category: "playas", image: "https://www.santjosep.net/wp-content/uploads/2025/09/SEstanyol_8.webp", url: "https://www.santjosep.net/ver/playas/sestanyol/" }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [1.3863335, 38.8421649] },
+      "properties": { name: "Ses Salines", description: "Playa icónica dentro del Parque Natural de ses Salines, larga, abierta y cosmopolita.", category: "playas", image: "https://www.santjosep.net/wp-content/uploads/2024/09/534B0885.jpg", url: "https://www.santjosep.net/ver/playas/ses-salines/" }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [1.265340, 38.876628] },
+      "properties": { name: "Ses Boques", description: "Cala de guijarros y aguas transparentes, con clásico restaurante marinero.", category: "playas", image: "https://www.santjosep.net/wp-content/uploads/2020/01/sesboques_IMG_0925.jpg", url: "https://www.santjosep.net/ver/playas/ses-boques/" }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [1.234167, 38.931389] },
+      "properties": { name: "Cala Molí", description: "Tranquila y familiar, con carácter natural y vistas a s’Espartar.", category: "playas", image: "https://www.santjosep.net/wp-content/uploads/2025/09/calaMoli.webp", url: "https://www.santjosep.net/ver/playas/cala-moli/" }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [1.232472, 38.941639] },
+      "properties": { name: "Es Pujolets", description: "Pequeño rincón rocoso y silencioso en Cala Tarida.", category: "playas", image: "https://www.santjosep.net/wp-content/uploads/2025/09/Espujolets.webp", url: " https://www.santjosep.net/ver/playas/es-pujolets/" }
+    },
+
 
     // --- MUSEOS ---
     {
@@ -163,57 +194,106 @@ const data = {
         category: "iglesias" 
       }
     },
-
-    // --- BIBLIOTECA ---
-    {
-      "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [1.2733945, 38.9681657] },
-      "properties": { 
-        "name": "Biblioteca de Cala de Bou", 
-        "description": "Biblioteca pública en Cala de Bou", 
-        "category": "biblioteca" 
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [1.294534, 38.9213996] },
-      "properties": { 
-        "name": "Biblioteca Municipal Sant Josep de sa Talaia", 
-        "description": "Biblioteca principal del municipio", 
-        "category": "biblioteca" 
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [1.3960074, 38.8916104] },
-      "properties": { 
-        "name": "Biblioteca Vicent Serra Orvay", 
-        "description": "Biblioteca en Sant Jordi de ses Salines", 
-        "category": "biblioteca" 
-      }
-    },
-
+	  
     // --- TORRES ---
     {
       "type": "Feature",
       "geometry": { "type": "Point", "coordinates": [1.40405, 38.87321] },
-      "properties": { name: "Torre de sa Sal Rossa", description: "También llamada Torre des Carregador, construida en el siglo XVI para proteger las salinas.", category: "torres" }
+      "properties": { name: "Torre de sa Sal Rossa", description: "También llamada Torre des Carregador, construida en el siglo XVI para proteger las salinas.", category: "torres", image: 'https://www.santjosep.net/wp-content/uploads/2025/09/web1600-00082.jpg' }
     },
     {
       "type": "Feature",
       "geometry": { "type": "Point", "coordinates": [1.405842, 38.832196] },
-      "properties": { name: "Torre de ses Portes", description: "Situada entre Es Cavallet y Ses Salines, torre defensiva del siglo XVI.", category: "torres" }
+      "properties": { name: "Torre de ses Portes", description: "Situada entre Es Cavallet y Ses Salines, torre defensiva del siglo XVI.", category: "torres", image: 'https://www.santjosep.net/wp-content/uploads/2025/09/IMG_4210.jpg' }
     },
     {
       "type": "Feature",
       "geometry": { "type": "Point", "coordinates": [1.22837, 38.87417] },
-      "properties": { name: "Torre des Savinar (o Torre del Pirata)", description: "Ubicada frente a Es Vedrà, construida en el siglo XVIII.", category: "torres" }
+      "properties": { name: "Torre des Savinar (o Torre del Pirata)", description: "Ubicada frente a Es Vedrà, construida en el siglo XVIII.", category: "torres", image: 'https://www.santjosep.net/wp-content/uploads/2025/09/P0520061.jpg' }
     },
     {
       "type": "Feature",
       "geometry": { "type": "Point", "coordinates": [1.23045, 38.97276] },
-      "properties": { name: "Torre d’en Rovira", description: "Defensa costera erigida en 1763 sobre la Punta d’en Rovira, cerca de Cala Conta.", category: "torres" }
-    }
-
+      "properties": { name: "Torre d’en Rovira", description: "Defensa costera erigida en 1763 sobre la Punta d’en Rovira, cerca de Cala Conta.", category: "torres", image: 'https://www.santjosep.net/wp-content/uploads/2025/09/IMG_9938-scaled.jpg' }
+    },
+	  
+	// --- PATRIMONIO ---
+	
+	  {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [1.403472, 38.850778] },
+      "properties": { name: "Punta des Cavallet (Muelle de Llevant)", description: "Desde allí se embarcaba sal con destino a la ciudad de Ibiza, siendo uno de los tres puertos desde los que se llegó a realizar dicha tarea", category: "patrimonio", image: 'https://www.santjosep.net/wp-content/uploads/2022/01/P1085539.jpg' }
+    },
+	  
+    {
+      "type": "Feature",
+      "geometry": { 
+        "type": "Polygon", 
+        "coordinates": [[
+          [1.287300, 38.921913],
+          [1.288458, 38.924184],
+          [1.290754, 38.924017],
+          [1.290733, 38.925335],
+          [1.292085, 38.926170],
+          [1.293866, 38.925352],
+          [1.294976, 38.925886],
+          [1.294194, 38.928038],
+          [1.295559, 38.927909],
+          [1.295980, 38.925685],
+          [1.295023, 38.925040],
+          [1.295700, 38.923581],
+          [1.298447, 38.921844],
+          [1.297155, 38.919851],
+          [1.299027, 38.919083],
+          [1.295525, 38.914271],
+          [1.292786, 38.916201],
+          [1.291607, 38.916064],
+          [1.291826, 38.917436],
+          [1.291511, 38.918994],
+          [1.289627, 38.918680],
+          [1.291043, 38.920283],
+          [1.289131, 38.922123],
+          [1.287300, 38.921913]
+        ]]
+      },
+      "properties": { 
+        "name": "Sant Josep de Sa Talaia", 
+        "description": "El municipio de Sant Josep de sa Talaia, la puerta por vía aérea de millones de viajeros y, a pesar de ser el tercer municipio de la isla en número de población (en 2019 se superaron los 27.000 habitantes) es el primero de Eivissa en superficie, puesto que ocupa 154 km2.", 
+        "category": "pueblos", 
+        "type": "zone" 
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { 
+        "type": "Polygon", 
+        "coordinates": [[
+          [1.292222, 38.942250],
+          [1.292361, 38.941556],
+          [1.292944, 38.941361],
+          [1.293194, 38.940889],
+          [1.293333, 38.940139],
+          [1.294472, 38.939806],
+          [1.294472, 38.940278],
+          [1.294722, 38.940361],
+          [1.294861, 38.940806],
+          [1.295139, 38.940778],
+          [1.295250, 38.940972],
+          [1.294861, 38.941750],
+          [1.294417, 38.941972],
+          [1.293556, 38.941972],
+          [1.293306, 38.942056],
+          [1.292639, 38.941944],
+          [1.292583, 38.942333],
+          [1.292222, 38.942250]
+        ]]
+      },
+      "properties": { 
+        "name": "Sant Agustí des Vedrà", 
+        "description": "Las tierras que corresponden en la actualidad al pueblo de Sant Agustí des Vedrà pertenecían al antiguo ‘’Quartó de Portmany’’.", 
+        "category": "pueblos", 
+        "type": "zone" 
+      }
+    }    
   ]
 };
