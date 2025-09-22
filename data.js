@@ -119,34 +119,53 @@ const data = {
     },
 
 
-    // --- MUSEOS ---
+    // --- CENTROS CULTURALES ---
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [1.3890989, 38.8682989] },
+      "geometry": { "type": "Point", "coordinates": [1.389098, 38.868299] },
       "properties": { 
         name: "Centre d'Interpretació Sant Francesc", 
         description: "Centro de interpretación del Parque Natural de Ses Salines en Ibiza y Formentera.", 
-        category: "museos" 
+        category: "cultura",
+        image: "https://www.santjosep.net/wp-content/uploads/2022/01/centrointerpretacion_santfrancesc-3.jpg",
+        urñ: "https://www.santjosep.net/ver/patrimonio/centro-de-interp…de-sant-francesc/"
       }
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [1.2939188, 38.9411543] },
+      "geometry": { "type": "Point", "coordinates": [1.293861, 38.941250] },
       "properties": { 
         name: "Can Curt", 
-        description: "Ubicación de Can Curt.", 
-        category: "museos" 
+        description: "Sant Agustí des Vedrà cuenta con su propia sala de exposiciones donde poder deleitarse con el arte en las variadas exposiciones artísticas", 
+        category: "cultura",
+        image: "https://www.santjosep.net/wp-content/uploads/2014/04/cancurt_IMG_2597.jpg",
+        url: "https://www.santjosep.net/ver/patrimonio/centro-cultural-can-curt/"
       }
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [1.2928303, 38.921545] },
+      "geometry": { "type": "Point", "coordinates": [1.292833, 38.921556] },
       "properties": { 
         name: "Can Jeroni", 
-        description: "Ubicación de Can Jeroni.", 
-        category: "museos" 
+        description: "En Sant Josep también existe un lugar especial para el arte. La sala de exposiciones municipal de Can Jeroni,", 
+        category: "cultura",
+        image: "https://www.santjosep.net/wp-content/uploads/2018/02/exposicion_fotografia_can_jeroni.jpg",
+        url: "https://www.santjosep.net/ver/patrimonio/centro-cultural-can-jeroni/"
       }
     },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [1.333889, 38.867583] },
+      "properties": { 
+        name: "Centro de Interpretación del Poblado Fenicio de Sa Caleta", 
+        description: "Este espacio ofrece a los visitantes una experiencia inmersiva mediante paneles informativos, recreaciones virtuales y una aplicación multilingüe", 
+        category: "cultura",
+        image: "https://www.santjosep.net/wp-content/uploads/2025/06/Image12.webp",
+        url: "https://www.santjosep.net/ver/patrimonio/centro-de-interp…cio-de-sa-caleta/"
+
+      }
+    },
+
 
     // --- IGLESIAS ---
     {
@@ -218,12 +237,30 @@ const data = {
     },
 	  
 	// --- PATRIMONIO ---
-	
-	  {
+
+    {
       "type": "Feature",
       "geometry": { "type": "Point", "coordinates": [1.403472, 38.850778] },
-      "properties": { name: "Punta des Cavallet (Muelle de Llevant)", description: "Desde allí se embarcaba sal con destino a la ciudad de Ibiza, siendo uno de los tres puertos desde los que se llegó a realizar dicha tarea", category: "patrimonio", image: 'https://www.santjosep.net/wp-content/uploads/2022/01/P1085539.jpg' }
+      "properties": { 
+        name: "Punta des Cavallet (Muelle de Llevant)", 
+        description: "Desde allí se embarcaba sal con destino a la ciudad de Ibiza, siendo uno de los tres puertos desde los que se llegó a realizar dicha tarea", 
+        category: "patrimonio", 
+        image: 'https://www.santjosep.net/wp-content/uploads/2022/01/P1085539.jpg' }
     },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [1.2410705, 38.8912677] },
+      "properties": { 
+        name: "Ses Païsses de Cala d’Hort", 
+        description: "Este conjunto monumental corresponde a las ruinas de un asentamiento rural de las épocas púnica y romana", 
+        category: "patrimonio", 
+        image: 'https://www.santjosep.net/wp-content/uploads/2020/01/sespaissescaladhort_IMG_0251.jpg',
+        url: "https://www.santjosep.net/ver/patrimonio/ses-paisses-de-cala-dhort/"
+      
+      }
+    },
+
+  // --- PUEBLOS ----
 	  
     {
       "type": "Feature",

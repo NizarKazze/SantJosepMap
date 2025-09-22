@@ -1,25 +1,54 @@
 <!-- Contenedor del mapa -->
 <div id="mapContent" style="display:flex;flex-wrap:wrap;">
   <div id="filter" style="flex:1 1 300px;max-width:300px;padding:10px;">
-    <div id="SearchContainer">
-      <div class="SearchImg">
-        <img src="https://www.santjosep.net/wp-content/uploads/2025/09/lupa.png" alt="">
-      </div>
-      <input type="text" id="searchInput" placeholder="buscar..." />
+    <div class="maptitle">
+      <h1>Sant Josep Map</h1>
     </div>
-    <select id="selectLocation">
-      <option value="">Todas las categorias</option>
-      <option value="playas">Playas</option>
-      <option value="iglesias">Iglesias</option>
-      <option value="museos">Museos</option>
-      <option value="torres">Torres</option>
-      <option value="patrimonio">Patrimonio</option>
-      <option value="pueblos">Pueblos</option>
-    </select>
     <div class="btnGroup">
       <button id="btnShowFilter" class='mapbtn'>Resultado Filtro</button>
       <button id="btnShowMap" class='mapbtn'>Mapa</button>
-      <button id="btnGeoloc" class='mapbtn'>Geolocalizar</button>
+      <div id="btnGeoloc">
+        <div class="img-container">
+          <img src="https://www.santjosep.net/wp-content/uploads/2025/09/geolocicon-e1758531188961.png" alt="ubicación">
+        </div>
+        <div class="textContent">
+          <h3>Cerca de mí</h3>
+          <p>Se solicitará permiso.</p>
+        </div>
+      </div>
+    </div>
+    <div class="filterTitle">
+      <div class="img-container">
+        <img src="https://www.santjosep.net/wp-content/uploads/2025/09/filtericon-e1758532062691.png" alt="filtro">
+      </div>
+      <div class="textContent">
+        <h2>FILTROS</h2>
+      </div>
+    </div>
+    <div id="selectLocation">
+      <div class="title-container">
+        <h2>CATEGORIÁS</h2>
+      </div>
+      <div id="categoryBtnGroup">
+        <button value="">Todos</button>
+        <button value="playas">Playas</button>
+        <button value="iglesias">Iglesias</button>
+        <button value="museos">Museos</button>
+        <button value="torres">Torres</button>
+        <button value="patrimonio">Patrimonio</button>
+        <button value="pueblos">Pueblos</button>
+      </div>
+      <div class="divider"></div>
+      <div id="searchContainer">
+        <h2>BÚSQUEDA</h2>
+        <div id="SearchinputContainer">
+          <div class="SearchImg">
+            <img src="https://www.santjosep.net/wp-content/uploads/2025/09/lupaicon-e1758529228860.png" alt="">
+          </div>
+          <input type="text" id="searchInput" placeholder="buscar..." />
+        </div>
+      </div>
+
     </div>
     <div id="filterResults"></div>
   </div>
@@ -258,8 +287,20 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // ============== FILTER BY CATEGORY ===============
-  function filtro() {
-    const category = document.getElementById('selectLocation').value;
+
+  const categoryBtn = document.querySelectorAll('#selectLocation button');
+  categoryBtn.forEach(button => {
+    button.addEventListener('click', () => {
+      filtro(button.value);
+      categoryBtn.forEach(btn => {
+        btn.style.backgroundColor = "";
+      });
+
+      button.style.backgroundColor = "#FCA01F";
+      });
+  });
+
+  function filtro(category) {
     const filterResults = document.getElementById('filterResults');
     filterResults.innerHTML = "";
 
