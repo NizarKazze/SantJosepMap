@@ -19,10 +19,10 @@
   background-color: #1ca8e2;
   color: white;
 }
-.btnGroup{display: flex; margin-top: 15px;}
 
-#btnShowFilter{display:none;}
-#btnShowMap{display:none;}
+
+
+/* Map */
 
 #mapContent {
   display: flex;
@@ -32,39 +32,63 @@
 }
 #map {flex: 0 0 70%; height: 100vh !important;}
 
+/* Filter slidebar*/
 .maptitle{
   margin-bottom: 5%;
   margin-top: 5%;
 }
 
-.btnGroup{
-  margin-bottom: 4%;
-}
+.maptitle h1 {font-weight: 600;}
 
-#btnGeoloc{
-  display: flex;
-  gap: 6px;
-  cursor: pointer;
-}
-
-#btnGeoloc .img-container{
+.btnGroup {margin-bottom: 4%; display: flex; justify-content: space-between;}
+#selectMapView{display: flex; align-items: center;}
+#btnGeoloc{display: flex;}
+#btnShowFilter, #btnShowMap {display:none;}
+#btnGeoloc, #btnShowFilter, #btnShowMap{gap: 6px; cursor: pointer; align-items: center;}
+#btnGeoloc .img-container, 
+#btnShowFilter .img-container,
+#btnShowMap .img-container
+{
   width: 40px; 
   height: 40px; 
   display: flex; 
   align-items: center; 
   justify-content: center;
+  align-items: center;
 }
-#btnGeoloc .img-container img {width: 35px; height: 32px;}
-#btnGeoloc .textContent h3 {
-  font-weight: 600;
+#btnGeoloc .img-container img,
+#btnShowFilter .img-container img,
+#btnShowMap .img-container img {width: 35px; height: 32px;}
+
+#btnGeoloc .textContent h3,
+#btnShowFilter h3,
+#btnShowMap h3
+{
+  font-weight: 600 !important;
+  margin: 0 !important;
+}
+#btnGeoloc .textContent p{
+    margin: 0 !important;
 }
 
-.filterTitle{
-  display: flex;
-  gap: 6px;
-  align-items: center;
+
+.filterTitle {
   margin-bottom: 2%;
+  display: flex;
+  justify-content: space-between;
 }
+.filterTitle button{
+  background: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  display: none;
+  cursor: pointer;
+}
+.filterTitle button p {margin: 0 !important; font-size: 18px !important;}
+.filterTitle button img {width: 24px; height: 30px;}
+.filterTitle .filterContainer {display: flex;gap: 6px;align-items: center;}
 .filterTitle .img-container{
   width: 40px; 
   height: 40px; 
@@ -75,8 +99,12 @@
 .filterTitle .img-container img {width: 30px; height: 30px;}
 .filterTitle .textContent h2{
   font-size: 18px;
-  font-weight: 600; 
+  font-weight: 600;
+  margin: 0 !important;
+  transition: color 0.4s ease
 }
+
+
 
 #selectLocation {
   margin-left: 5px; 
@@ -85,12 +113,13 @@
   border-radius: 10px;
   padding: 30px;
   margin-bottom: 5%;
+  overflow: hidden;
+  height: 375px;
+  transition: height 0.6s ease;
 }
-.title-container{  margin-bottom: 3%}
-.title-container h2{
-  font-size: 18px;
-  font-weight: 600;
-}
+
+.title-container {margin-bottom: 3%}
+.title-container h2 {font-size: 18px; font-weight: 600;}
 #categoryBtnGroup {
   display: flex;
   flex-wrap: wrap;
@@ -107,8 +136,9 @@
   cursor: pointer;
   flex: 0 0 auto;
   border-radius: 18px;
+  transition: border 0.3s ease
 }
-
+#categoryBtnGroup button:hover {border: 1px #FCA01F solid;}
 .divider{
   height: 1px;
   background-color: #707070;
@@ -116,13 +146,7 @@
   margin-top: 5%;
   margin-bottom: 5%;
 }
-
-#searchContainer h2{
-  margin-bottom: 3%;
-  font-size: 18px;
-  font-weight: 600;
-
-}
+#searchContainer h2 {margin-bottom: 3%; font-size: 18px; font-weight: 600;}
 #SearchinputContainer{
   display: flex; 
   gap: 20px; 
@@ -142,18 +166,18 @@
 }
 .SearchImg img {width: 35px; height: 32px;}
 #searchInput{
-    height: 35px;
-    width: 100%;
-    border: none;
-    outline: none;
-    box-shadow: none;
-    background: none;
+  height: 35px;
+  width: 100%;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  background: none;
 }
 #searchInput::placeholder{
-    font-size: 16px;
-    color: #2E2E2D;
-    font-weight: 100;
-    line-height: 30px;
+  font-size: 16px;
+  color: #2E2E2D;
+  font-weight: 100;
+  line-height: 30px;
 }
 
 #filter {
@@ -172,6 +196,7 @@
   margin-bottom: 200px;
 }
 
+/* Result Item */
 .resultItem {
   border: 1px solid #ddd;
   border-radius: 22px;
@@ -187,7 +212,6 @@
   box-shadow: 0 6px 6px rgba(0,0,0,0.15);
   border-color: #1ca8e2;
 }
-
 .resultTitle {
   font-size: 18px;
   margin: 0;
@@ -195,7 +219,6 @@
   margin-right: 5% !important;
   font-weight: 600;
 }
-
 .resultDesc {
   color: #666;
   line-height: 1.4;
@@ -204,7 +227,6 @@
   margin-right: 5% !important;
   flex-grow: 1;
 }
-
 .imgContainer {
   position: relative;
   width: 100%;
@@ -212,15 +234,12 @@
   overflow: hidden;
   border-top-left-radius: 22px;
   border-top-right-radius: 22px;
-
 }
-
 .resultImage {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-
 .categoryTag {
   position: absolute;
   top: 10px;
@@ -230,7 +249,6 @@
   color: #fff;
   border-radius: 14px;
 }
-
 .websiteLink {
   display: inline-flex;
   align-items: center;
@@ -249,7 +267,6 @@
   margin-right: 5% !important;
   margin-bottom: 8% !important;
 }
-
 .websiteLink:hover {background-color: #1ca8e2; color: white;}
 
 .clickable-item {cursor: pointer;}
@@ -257,11 +274,7 @@
 @media (max-width: 999px) {
     
   #mapContent {height: auto;}
-  #filter {
-    width: 100%;
-    height: auto;
-    padding: 15px !important;
-  }
+  #filter {width: 100%; height: auto; padding: 15px !important; }
   #map {
     flex: 1 1 auto;
     width: 100%;
@@ -270,13 +283,43 @@
     border-radius: 12px;
   }
   #filterResults { display: none;}
-  #btnShowFilter{display:block;}
-  #btnShowMap{display:block;}
+  #btnShowFilter{display:flex;}
   .resultItem{margin-bottom: 15px;}
+  #selectLocation{
+    padding: 0;
+    height: 0;
+  }
+  #categoryBtnGroup{
+    width: 100% !important;
+  }
+
+  .filterTitle .filterContainer {cursor: pointer;}
+  .filterTitle .filterContainer:hover h2 {color: #1ca8e2;}
+  .maptitle{text-align: center;}
+  
+  #btnGeoloc .textContent h3,
+  #btnShowFilter h3,
+  #btnShowMap h3
+  {
+    font-size: 18px !important;
+  }
+  #btnGeoloc .textContent p{
+    font-size: 14px !important;
+  }
+  .btnGroup{margin-bottom: 6%;}
+
 }
 
 @media (min-width: 1000px) and (max-width: 1600px) {
     #filterResults {grid-template-columns: 1fr;}
+    #categoryBtnGroup{
+      width: 100% !important;
+    }
+
+    #selectLocation{padding: 20px;}
+    #SearchinputContainer{ padding: 6px 10px;}
+    .SearchImg{margin-left: 5px; width: 30px; height: 30px;}
+    .SearchImg img {width: 25px; height: 23px;}
 }
 
 .leaflet-popup-content-wrapper{padding: 0 !important}

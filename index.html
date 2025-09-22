@@ -5,8 +5,6 @@
       <h1>Sant Josep Map</h1>
     </div>
     <div class="btnGroup">
-      <button id="btnShowFilter" class='mapbtn'>Resultado Filtro</button>
-      <button id="btnShowMap" class='mapbtn'>Mapa</button>
       <div id="btnGeoloc">
         <div class="img-container">
           <img src="https://www.santjosep.net/wp-content/uploads/2025/09/geolocicon-e1758531188961.png" alt="ubicación">
@@ -16,16 +14,36 @@
           <p>Se solicitará permiso.</p>
         </div>
       </div>
+      <div id="selectMapView">
+        <div id="btnShowFilter">
+          <div class="img-container">
+            <img src="https://www.santjosep.net/wp-content/uploads/2025/09/listIcon-e1758537294910.png" alt="">
+          </div>
+          <h3>Ver Lista</h3>
+        </div>
+        <div id="btnShowMap">
+          <div class="img-container">
+            <img src="https://www.santjosep.net/wp-content/uploads/2025/09/mapIcon-e1758537997275.png" alt="">
+          </div>
+          <h3>Mapa</h3>
+        </div>
+      </div>
     </div>
     <div class="filterTitle">
-      <div class="img-container">
-        <img src="https://www.santjosep.net/wp-content/uploads/2025/09/filtericon-e1758532062691.png" alt="filtro">
+      <div class="filterContainer">
+        <div class="img-container">
+          <img src="https://www.santjosep.net/wp-content/uploads/2025/09/filtericon-e1758532062691.png" alt="filtro">
+        </div>
+        <div class="textContent">
+          <h2>FILTROS</h2>
+        </div>
       </div>
-      <div class="textContent">
-        <h2>FILTROS</h2>
-      </div>
+      <button id="filterCloseBtn">
+        <p>Cerrar</p>
+        <img src="https://www.santjosep.net/wp-content/uploads/2025/09/closeicon-e1758535460246.png" alt="">
+      </button>
     </div>
-    <div id="selectLocation">
+    <div id="selectLocation" class="selectLocation">
       <div class="title-container">
         <h2>CATEGORIÁS</h2>
       </div>
@@ -70,7 +88,13 @@
 document.addEventListener("DOMContentLoaded", function () {
   const isMobile = window.innerWidth <= 768;
   const map = L.map('map').setView([38.900444, 1.327944], isMobile ? 11 : 13);
-  var base = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '&copy; OpenStreetMap contributors' }).addTo(map);
+
+L.tileLayer('https://cartodb-basemaps-a.global.ssl.fastly.net/light_all/{z}/{x}/{y}{r}.png', {
+  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://www.carto.com/">CARTO</a>',
+  subdomains: 'abcd',
+  maxZoom: 19
+}).addTo(map);
+
 
   
   map.whenReady(function () {
@@ -294,9 +318,11 @@ document.addEventListener("DOMContentLoaded", function () {
       filtro(button.value);
       categoryBtn.forEach(btn => {
         btn.style.backgroundColor = "";
+        btn.style.color = "";
       });
 
-      button.style.backgroundColor = "#FCA01F";
+        button.style.backgroundColor = "#FCA01F";
+        button.style.color = "white";
       });
   });
 
@@ -359,14 +385,60 @@ document.addEventListener("DOMContentLoaded", function () {
   btnShowFilter.addEventListener('click', () => {
     mapContainer.style.display = 'none';
     filterResultsContainer.style.display = 'block';
+    btnShowMap.style.display = 'flex';
+    btnShowFilter.style.display = 'none';
   });
  
   btnShowMap.addEventListener('click', () => {
     filterResultsContainer.style.display = 'none';
     mapContainer.style.display = 'block';
+    btnShowMap.style.display = 'none';
+    btnShowFilter.style.display = 'flex';
     setTimeout(() => map.invalidateSize(), 300);
   });
- 
+
+  if (window.innerWidth > 999) {
+    btnShowFilter.style.display = "none";
+    btnShowMap.style.display = "none";
+
+  }
+
+  const filterTitle = document.querySelector('.filterContainer');
+  const filterbtn = document.getElementById('filterCloseBtn');
+  const selectLocation = document.getElementById('selectLocation');
+  let isOpen = false;
+
+  filterTitle.addEventListener('click', () => {
+    if (window.innerWidth < 999) {
+      if (!isOpen) {
+        // Abrir
+        selectLocation.style.transition = 'height 0.5s ease, padding 0.5s ease';
+        selectLocation.style.height = '375px';
+        selectLocation.style.padding = '30px';
+        filterbtn.style.display = "flex"
+        isOpen = true;
+      } else {
+        // Cerrar
+        selectLocation.style.transition = 'height 0.5s ease, padding 0.5s ease';
+        selectLocation.style.height = '0px';
+        selectLocation.style.padding = '0 30px';
+        filterbtn.style.display = "none"
+        isOpen = false;
+      }
+    }
+  });
+
+  filterbtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (isOpen) {
+      selectLocation.style.transition = 'height 0.5s ease, padding 0.5s ease';
+      selectLocation.style.height = '0px';
+      selectLocation.style.padding = '0 30px';
+      filterbtn.style.display = "none"
+      isOpen = false;
+    }
+  });
+
   window.addEventListener('resize', function () {
     map.invalidateSize();
   });
