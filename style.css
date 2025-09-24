@@ -98,7 +98,7 @@
 }
 .filterTitle .img-container img {width: 30px; height: 30px;}
 .filterTitle .textContent h2{
-  font-size: 18px;
+  font-size: 18px !important;
   font-weight: 600;
   margin: 0 !important;
   transition: color 0.4s ease
@@ -119,7 +119,7 @@
 }
 
 .title-container {margin-bottom: 3%}
-.title-container h2 {font-size: 18px; font-weight: 600;}
+.title-container h2 {font-size: 18px !important; font-weight: 600;}
 #categoryBtnGroup {
   display: flex;
   flex-wrap: wrap;
@@ -146,7 +146,7 @@
   margin-top: 5%;
   margin-bottom: 5%;
 }
-#searchContainer h2 {margin-bottom: 3%; font-size: 18px; font-weight: 600;}
+#searchContainer h2 {margin-bottom: 3%; font-size: 18px !important; font-weight: 600;}
 #SearchinputContainer{
   display: flex; 
   gap: 20px; 
@@ -209,8 +209,8 @@
 }
 .resultItem:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 6px rgba(0,0,0,0.15);
-  border-color: #1ca8e2;
+  box-shadow: 0 4px 4px rgba(0,0,0,0.12);
+  border-color: #2FACB2;
 }
 .resultTitle {
   font-size: 18px;
@@ -278,7 +278,7 @@
   #map {
     flex: 1 1 auto;
     width: 100%;
-    height: 60vh !important;
+    height: 70vh !important;
     margin: 0px 20px;
     border-radius: 12px;
   }
@@ -294,20 +294,41 @@
   }
 
   .filterTitle .filterContainer {cursor: pointer;}
-  .filterTitle .filterContainer:hover h2 {color: #1ca8e2;}
-  .maptitle{text-align: center;}
+  .maptitle{text-align: center; margin-bottom: 8%;}
   
   #btnGeoloc .textContent h3,
   #btnShowFilter h3,
   #btnShowMap h3
   {
-    font-size: 18px !important;
-  }
-  #btnGeoloc .textContent p{
     font-size: 14px !important;
   }
-  .btnGroup{margin-bottom: 6%;}
-
+  #btnGeoloc .textContent p{
+    font-size: 10px !important;
+  }
+  .btnGroup{margin-bottom: 8%;}
+  #selectLocation .title-container h2{font-size: 14px !important}
+  #searchContainer h2 {font-size: 14px !important; margin-bottom: 20px;}
+  #btnGeoloc .img-container img, #btnShowFilter .img-container img, #btnShowMap .img-container img {
+    width: 32px;
+    height: 28px;
+    }
+    .filterTitle button img {
+        width: 18px;
+        height: 22px;
+    }
+    .filterTitle button p {
+        font-size: 14px !important;
+    }
+    .SearchImg img {
+        width: 24px !important;
+        height: 23px !important;
+    }
+    .SearchImg {
+        margin-left: 0;
+    }
+    #SearchinputContainer{padding: 8px 18px; gap: 10px;}
+    #categoryBtnGroup button {padding: 8px 18px;}
+    .websiteLink{display: none;}
 }
 
 @media (min-width: 1000px) and (max-width: 1600px) {
@@ -328,23 +349,21 @@
   margin: 0 !important;
   width: auto !important;
   height: auto !important;
-  min-width: 300px !important;
+  min-width: 250px !important;
 }
 
 .popupContainer {
-  display: flex;
-  align-items: flex-start;
-  gap: 8px;
   align-items: stretch;
-  max-width: 300px;
+  max-width: 100%;
 }
 
 .popupImg {
-  flex: 0 0 35%;
   display: flex;
+  overflow: hidden;
+  height: 60%;
 }
 
-.popupImage { width: 100%; height: 100%; border-radius: 8px; objec-fit: cover; }
+.popupImage { width: 100%; height: 100%; border-top-left-radius: 8px; border-top-right-radius: 8px; objec-fit: cover; }
 
 .popupContent {
   flex: 1;
@@ -361,5 +380,21 @@
 .popupDesc {
   font-size: 12px !important;
   color: #555;
-  margin: 0 !important;
+  margin: 8px 0 !important;
 }
+.leaflet-popup-close-button{top: 10px;}
+.leaflet-popup-close-button span{
+  font-size: 30px;
+  color: white;
+  margin-right: 10px;
+}
+
+.leaflet-control-zoom {border: 0px solid !important}
+.leaflet-control-zoom-out, .leaflet-control-zoom-in {
+    background-color: #1D1D1D !important;
+    color: white !important;
+    border-radius: 6px !important;
+    text-decoration: none !important;
+}
+.leaflet-control-zoom-in{margin-bottom: 2px;}
+

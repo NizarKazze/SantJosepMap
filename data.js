@@ -245,7 +245,8 @@ const data = {
         name: "Punta des Cavallet (Muelle de Llevant)", 
         description: "Desde allí se embarcaba sal con destino a la ciudad de Ibiza, siendo uno de los tres puertos desde los que se llegó a realizar dicha tarea", 
         category: "patrimonio", 
-        image: 'https://www.santjosep.net/wp-content/uploads/2022/01/P1085539.jpg' }
+        image: 'https://www.santjosep.net/wp-content/uploads/2022/01/P1085539.jpg' 
+      }
     },
     {
       "type": "Feature",
@@ -256,7 +257,94 @@ const data = {
         category: "patrimonio", 
         image: 'https://www.santjosep.net/wp-content/uploads/2020/01/sespaissescaladhort_IMG_0251.jpg',
         url: "https://www.santjosep.net/ver/patrimonio/ses-paisses-de-cala-dhort/"
-      
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [1.382056, 38.840250] },
+      "properties": { 
+        name: "Antiguo cargador de sal", 
+        description: "Como cargador de sal se conoce al espacio habilitado para el acopio, traslado y carga de la sal, en el caso de Ibiza, en embarcaciones.", 
+        category: "patrimonio", 
+        image: 'https://www.santjosep.net/wp-content/uploads/2022/01/web-01089.jpg',
+        url: "https://www.santjosep.net/ver/patrimonio/antiguo-cargador-de-sal/"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [1.391500, 38.896944] },
+      "properties": { 
+        name: "Pou Roig", 
+        description: "Se conservan pocos pozos de agua aptos para el consumo humano y animal, de los perforados en la tierra por árabes, romanos", 
+        category: "patrimonio", 
+        image: 'https://www.santjosep.net/wp-content/uploads/2020/01/pouroig_IMG_1154-1.jpg',
+        url: "https://www.santjosep.net/ver/patrimonio/pou-roig/"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [1.302722, 38.953111] },
+      "properties": { 
+        name: "Pou des Rafals", 
+        description: "Situado en la carretera de Sant Josep de sa Talaia a Sant Antoni de Portmany.", 
+        category: "patrimonio", 
+        image: 'https://www.santjosep.net/wp-content/uploads/2013/11/IMG_3071.jpg',
+        url: "https://www.santjosep.net/ver/patrimonio/pou-des-rafals/"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [1.295778, 38.911528] },
+      "properties": { 
+        name: "Font des Verger", 
+        description: "Situada entre la carretera de Sant Josep de sa Talaia y des Cubells, bien igual que los otros pozos, tiene un simbolismo especial", 
+        category: "patrimonio", 
+        image: 'https://www.santjosep.net/wp-content/uploads/2020/01/fontdesverger_P1020572.jpg',
+        url: "https://www.santjosep.net/ver/patrimonio/font-des-verger/"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [1.382278, 38.840694] },
+      "properties": { 
+        name: "Muelle de Sa Canal", 
+        description: "El lugar desprende un aire mágico, especialmente durante los atardeceres, y es el elemento más prominente de todo el conjunto que forma el poblado de Sa Canal.", 
+        category: "patrimonio", 
+        image: 'https://www.santjosep.net/wp-content/uploads/2022/01/RR_00740.jpg',
+        url: "https://www.santjosep.net/ver/patrimonio/muelle-de-sa-canal/"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [1.404750, 38.869056] },
+      "properties": { 
+        name: "Algibes de la Xanga", 
+        description: "Los grandes aljibes que todavía se pueden contemplar en las inmediaciones, en el margen de un agreste camino.", 
+        category: "patrimonio", 
+        image: 'https://www.santjosep.net/wp-content/uploads/2022/01/web1600-00260.jpg',
+        url: "https://www.santjosep.net/ver/patrimonio/algibes-de-la-xanga/"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [1.384472, 38.844944] },
+      "properties": { 
+        name: "Pou des Carbó", 
+        description: "El pou des Carbó está situado en la parroquia de Sant Francesc de s’Estany, en las proximidades de la playa de Ses Salines", 
+        category: "patrimonio", 
+        image: 'https://www.santjosep.net/wp-content/uploads/2022/01/Pou-des-Carbó.jpg',
+        url: "https://www.santjosep.net/ver/patrimonio/pou-des-carbo/"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [1.388806, 38.868250] },
+      "properties": { 
+        name: "Monumento al Salinero", 
+        description: "Justo detrás de la capilla de Sant Francesc de s’Estany encontramos esta escultura de un salinero realizada por el escultor Pedro Juan Hormigo", 
+        category: "patrimonio", 
+        image: 'https://www.santjosep.net/wp-content/uploads/2022/01/IMG_0068-1.jpg',
+        url: "https://www.santjosep.net/ver/patrimonio/monumento-al-salinero/"
       }
     },
 

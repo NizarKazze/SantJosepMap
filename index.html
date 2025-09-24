@@ -165,30 +165,35 @@ L.tileLayer('https://cartodb-basemaps-a.global.ssl.fastly.net/light_all/{z}/{x}/
 
 
 
-  function getIconByCategory(category) {
-    let color = "blue";
-    if (category === "playas") color = "green";
-    if (category === "museos") color = "red";
-    if (category === "iglesias") color = "orange";
-    if (category === "torres") color = "violet";
-    if (category === "patrimonio") color = "black";
+    function getIconByCategory(category) {
+      // Define los íconos personalizados por categoría
+      let icons = {
+        playas: "https://www.santjosep.net/wp-content/uploads/2025/09/playasIcon-e1758621854784.png",
+        museos: "img/icons/museo.png",
+        iglesias: "https://www.santjosep.net/wp-content/uploads/2025/09/iglesiasIcon-e1758705821671.png",
+        torres: "img/icons/torre.png",
+        patrimonio: "img/icons/patrimonio.png",
+        defaulticon: "https://www.santjosep.net/wp-content/uploads/2025/09/location-e1758621917999.png"
+      };
+      
+      let size = isMobile ? [22, 22] : [38, 38];
+    
+      return L.icon({
+        iconUrl: icons[category] || icons["defaulticon"],
+        iconSize: size,
+        iconAnchor: [size[0] / 2, size[1] / 2],
+        popupAnchor: [0, -size[1] / 2],
+        shadowUrl: null
+      });
+    }
 
-    return L.icon({
-      iconUrl: `https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-${color}.png`,
-      shadowUrl: "https://unpkg.com/leaflet/dist/images/marker-shadow.png",
-      iconSize: isMobile ? [16, 28] : [25, 41],
-      iconAnchor: isMobile ? [10, 33] : [12, 41],
-      popupAnchor: [1, -34],
-      shadowSize: isMobile ? [20, 20] : [41, 41]
-    });
-  }
 
   function getColorByCategory(category) {
     const categoryColors = {
-      'playas': '#10b981',
+      'playas': '#2FACB2',
       'museos': '#ef4444',
-      'iglesias': '#f59e0b',
-      'torres': '#8b5cf6',
+      'iglesias': '#8b5cf6',
+      'torres': '#f59e0b',
       'patrimonio': '#374151'
     };
     return categoryColors[category] || '#6b7280';
