@@ -52,7 +52,6 @@
         <button value="playas">Playas</button>
         <button value="iglesias">Iglesias</button>
         <button value="museos">Museos</button>
-        <button value="torres">Torres</button>
         <button value="patrimonio">Patrimonio</button>
         <button value="pueblos">Pueblos</button>
       </div>
@@ -81,7 +80,8 @@
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
 <!-- JSON Data -->
-<script src="https://www.santjosep.net/wp-content/themes/atmosphere-child/js/mapdata.js"></script>
+<!-- <script src="https://www.santjosep.net/wp-content/themes/atmosphere-child/js/mapdata.js"></script> -->
+<script src="data.js"></script>
 
 
 <script>
@@ -168,18 +168,17 @@ L.tileLayer('https://cartodb-basemaps-a.global.ssl.fastly.net/light_all/{z}/{x}/
     function getIconByCategory(category) {
       // Define los íconos personalizados por categoría
       let icons = {
-        playas: "https://www.santjosep.net/wp-content/uploads/2025/09/playasIcon-e1758621854784.png",
-        museos: "img/icons/museo.png",
-        iglesias: "https://www.santjosep.net/wp-content/uploads/2025/09/iglesiasIcon-e1758705821671.png",
-        torres: "img/icons/torre.png",
-        patrimonio: "img/icons/patrimonio.png",
+        playas: "https://www.santjosep.net/wp-content/uploads/2025/09/iconPlaya-e1758869390294.png",
+        museos: "https://www.santjosep.net/wp-content/uploads/2025/09/museosIcon.png",
+        iglesias: "https://www.santjosep.net/wp-content/uploads/2025/09/IconIglesia-e1758869145887.png",
+        patrimonio: "https://www.santjosep.net/wp-content/uploads/2025/09/patrimonioIcon.png",
         defaulticon: "https://www.santjosep.net/wp-content/uploads/2025/09/location-e1758621917999.png"
       };
       
       let size = isMobile ? [22, 22] : [38, 38];
     
       return L.icon({
-        iconUrl: icons[category] || icons["defaulticon"],
+        iconUrl: icons[category] || icons.defaulticon,
         iconSize: size,
         iconAnchor: [size[0] / 2, size[1] / 2],
         popupAnchor: [0, -size[1] / 2],
@@ -191,10 +190,9 @@ L.tileLayer('https://cartodb-basemaps-a.global.ssl.fastly.net/light_all/{z}/{x}/
   function getColorByCategory(category) {
     const categoryColors = {
       'playas': '#2FACB2',
-      'museos': '#ef4444',
+      'museos': '#ff74ab',
       'iglesias': '#8b5cf6',
-      'torres': '#f59e0b',
-      'patrimonio': '#374151'
+      'patrimonio': '#ffc10d'
     };
     return categoryColors[category] || '#6b7280';
   }
@@ -245,16 +243,19 @@ L.tileLayer('https://cartodb-basemaps-a.global.ssl.fastly.net/light_all/{z}/{x}/
     resultDesc.classList.add('resultDesc');
     resultDesc.textContent = point.properties.description;
 
-    let websiteLink = document.createElement('a');
-    websiteLink.classList.add('websiteLink');
-    websiteLink.href = point.properties.url || "#";
-    websiteLink.textContent = 'Visitar Página';
-    websiteLink.rel = 'noopener noreferrer';
-
     divContainer.appendChild(imgContainer);
     divContainer.appendChild(resultTitle);
     divContainer.appendChild(resultDesc);
-    divContainer.appendChild(websiteLink);
+
+    divContainer.addEventListener("click", function(e) {
+      if (e.target.tagName !== "A") {
+        if (point.properties.url) {
+          window.location.href = point.properties.url;
+        }
+      }
+    });
+
+  filterResults.appendChild(divContainer);
 
     if (point.properties.type == "zone"){
       divContainer.addEventListener("click", function (e) {
@@ -265,7 +266,7 @@ L.tileLayer('https://cartodb-basemaps-a.global.ssl.fastly.net/light_all/{z}/{x}/
       });
       
     } else {
-      divContainer.addEventListener("click", function(e) {
+      divContainer.addEventListener("mouseenter", function(e) {
         if (e.target.tagName !== 'A') {
           const coords = point.geometry.coordinates;
           map.setView([coords[1], coords[0]]); 
@@ -377,7 +378,6 @@ L.tileLayer('https://cartodb-basemaps-a.global.ssl.fastly.net/light_all/{z}/{x}/
     }
   });
 
-  document.getElementById('selectLocation').addEventListener('change', filtro);
   filtro();
   
   // ============ RESPONSIVE =============

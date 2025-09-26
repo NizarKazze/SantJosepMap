@@ -126,7 +126,7 @@ const data = {
       "properties": { 
         name: "Centre d'Interpretació Sant Francesc", 
         description: "Centro de interpretación del Parque Natural de Ses Salines en Ibiza y Formentera.", 
-        category: "cultura",
+        category: "museos",
         image: "https://www.santjosep.net/wp-content/uploads/2022/01/centrointerpretacion_santfrancesc-3.jpg",
         urñ: "https://www.santjosep.net/ver/patrimonio/centro-de-interp…de-sant-francesc/"
       }
@@ -137,7 +137,7 @@ const data = {
       "properties": { 
         name: "Can Curt", 
         description: "Sant Agustí des Vedrà cuenta con su propia sala de exposiciones donde poder deleitarse con el arte en las variadas exposiciones artísticas", 
-        category: "cultura",
+        category: "museos",
         image: "https://www.santjosep.net/wp-content/uploads/2014/04/cancurt_IMG_2597.jpg",
         url: "https://www.santjosep.net/ver/patrimonio/centro-cultural-can-curt/"
       }
@@ -148,7 +148,7 @@ const data = {
       "properties": { 
         name: "Can Jeroni", 
         description: "En Sant Josep también existe un lugar especial para el arte. La sala de exposiciones municipal de Can Jeroni,", 
-        category: "cultura",
+        category: "museos",
         image: "https://www.santjosep.net/wp-content/uploads/2018/02/exposicion_fotografia_can_jeroni.jpg",
         url: "https://www.santjosep.net/ver/patrimonio/centro-cultural-can-jeroni/"
       }
@@ -159,7 +159,7 @@ const data = {
       "properties": { 
         name: "Centro de Interpretación del Poblado Fenicio de Sa Caleta", 
         description: "Este espacio ofrece a los visitantes una experiencia inmersiva mediante paneles informativos, recreaciones virtuales y una aplicación multilingüe", 
-        category: "cultura",
+        category: "museos",
         image: "https://www.santjosep.net/wp-content/uploads/2025/06/Image12.webp",
         url: "https://www.santjosep.net/ver/patrimonio/centro-de-interp…cio-de-sa-caleta/"
 
@@ -218,22 +218,22 @@ const data = {
     {
       "type": "Feature",
       "geometry": { "type": "Point", "coordinates": [1.40405, 38.87321] },
-      "properties": { name: "Torre de sa Sal Rossa", description: "También llamada Torre des Carregador, construida en el siglo XVI para proteger las salinas.", category: "torres", image: 'https://www.santjosep.net/wp-content/uploads/2025/09/web1600-00082.jpg' }
+      "properties": { name: "Torre de sa Sal Rossa", description: "También llamada Torre des Carregador, construida en el siglo XVI para proteger las salinas.", category: "patrimonio", image: 'https://www.santjosep.net/wp-content/uploads/2025/09/web1600-00082.jpg' }
     },
     {
       "type": "Feature",
       "geometry": { "type": "Point", "coordinates": [1.405842, 38.832196] },
-      "properties": { name: "Torre de ses Portes", description: "Situada entre Es Cavallet y Ses Salines, torre defensiva del siglo XVI.", category: "torres", image: 'https://www.santjosep.net/wp-content/uploads/2025/09/IMG_4210.jpg' }
+      "properties": { name: "Torre de ses Portes", description: "Situada entre Es Cavallet y Ses Salines, torre defensiva del siglo XVI.", category: "patrimonio", image: 'https://www.santjosep.net/wp-content/uploads/2025/09/IMG_4210.jpg' }
     },
     {
       "type": "Feature",
       "geometry": { "type": "Point", "coordinates": [1.22837, 38.87417] },
-      "properties": { name: "Torre des Savinar (o Torre del Pirata)", description: "Ubicada frente a Es Vedrà, construida en el siglo XVIII.", category: "torres", image: 'https://www.santjosep.net/wp-content/uploads/2025/09/P0520061.jpg' }
+      "properties": { name: "Torre des Savinar (o Torre del Pirata)", description: "Ubicada frente a Es Vedrà, construida en el siglo XVIII.", category: "patrimonio", image: 'https://www.santjosep.net/wp-content/uploads/2025/09/P0520061.jpg' }
     },
     {
       "type": "Feature",
       "geometry": { "type": "Point", "coordinates": [1.23045, 38.97276] },
-      "properties": { name: "Torre d’en Rovira", description: "Defensa costera erigida en 1763 sobre la Punta d’en Rovira, cerca de Cala Conta.", category: "torres", image: 'https://www.santjosep.net/wp-content/uploads/2025/09/IMG_9938-scaled.jpg' }
+      "properties": { name: "Torre d’en Rovira", description: "Defensa costera erigida en 1763 sobre la Punta d’en Rovira, cerca de Cala Conta.", category: "patrimonio", image: 'https://www.santjosep.net/wp-content/uploads/2025/09/IMG_9938-scaled.jpg' }
     },
 	  
 	// --- PATRIMONIO ---
@@ -345,6 +345,28 @@ const data = {
         category: "patrimonio", 
         image: 'https://www.santjosep.net/wp-content/uploads/2022/01/IMG_0068-1.jpg',
         url: "https://www.santjosep.net/ver/patrimonio/monumento-al-salinero/"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [1.404250, 38.872444] },
+      "properties": { 
+        name: "Plaza salinera de la Xanga", 
+        description: "Forma el núcleo más destacable y visible de lo que fue en su día un punto neurálgico en la comercialización de la sal en época púnico-fenicia y posteriormente en época cristiana.", 
+        category: "patrimonio", 
+        image: 'https://www.santjosep.net/wp-content/uploads/2022/01/web1600-00224.jpg',
+        url: "https://www.santjosep.net/ver/patrimonio/plaza-salinera-de-la-xanga/"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [1.398722, 38.837833] },
+      "properties": { 
+        name: "Pou de Sa Trinxa", 
+        description: "Uno de los raros ejemplos de pozo construido con bloques de marés, la arenisca predominante en la zona", 
+        category: "patrimonio", 
+        image: 'https://www.santjosep.net/wp-content/uploads/2022/01/RR_01072.jpg',
+        url: "https://www.santjosep.net/ver/patrimonio/pou-de-sa-trinxa/"
       }
     },
 
